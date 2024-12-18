@@ -1,0 +1,141 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Vocabulary Practice{% endblock %}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}"/>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    {% block head %}{% endblock %}
+    <style>
+      /* Ẩn ảnh chuyển cảnh ban đầu */
+      #transition-image {
+        display: none; /* Ẩn mặc định */
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+
+      #transition-image img {
+        width: 300px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- Thêm thẻ audio để phát âm thanh -->
+    <audio
+      id="mic-sound"
+      src="{{ url_for('static', filename='sound/nhac_intro_de_thuong_nhat-www_tiengdong_com.mp3') }}"
+    ></audio>
+
+    <!-- Ảnh chuyển cảnh (ẩn ban đầu) -->
+    <div id="transition-image">
+      <img
+        src="https://i.pinimg.com/originals/f3/c4/3c/f3c43c779323215a67c6959e76286ad4.gif"
+        alt="Transition Effect"
+      />
+    </div>
+
+    <!-- Floating Widget Icon -->
+    <div
+      id="floating-widget"
+      onclick="playSoundAndShowImage()"
+      title="Practice Speaking"
+    >
+      <span class="widget-icon">🎤</span>
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Scripts -->
+    <script>
+      function playSoundAndShowImage() {
+        const sound = document.getElementById("mic-sound");
+        const transitionImage = document.getElementById("transition-image");
+
+        // Hiển thị ảnh chuyển cảnh
+        transitionImage.style.display = "flex";
+        transitionImage.style.visibility = "visible";
+
+        // Phát âm thanh
+        sound.play();
+
+        // Dừng âm thanh và chuyển trang sau 3 giây
+        setTimeout(() => {
+          sound.pause();
+          sound.currentTime = 0;
+          transitionImage.style.display = "none";
+          transitionImage.style.visibility = "hidden";
+          window.location.href = "/game";
+        }, 3000);
+      }
+    </script>
+
+    <!-- Styles for Floating Widget -->
+    <style>
+      #floating-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        background-color:rgb(255, 179, 104);
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 9999;
+        transition: transform 0.3s, background-color 0.3s;
+      }
+
+      .widget-icon {
+        font-size: 2rem;
+        color: white;
+      }
+
+      #floating-widget:hover {
+        background-color: #ff8c00;
+        transform: scale(1.1);
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 10px rgba(244, 155, 66, 0.8);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(229, 173, 109, 0.4);
+        }
+        100% {
+          box-shadow: 0 0 10px rgba(255, 178, 35, 0.8);
+        }
+      }
+
+      #floating-widget {
+        animation: pulse 2s infinite;
+      }
+    </style>
+  </body>
+</html>

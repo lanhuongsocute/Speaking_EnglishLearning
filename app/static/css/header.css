@@ -1,0 +1,138 @@
+/* header.css */
+
+.header {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #ffffff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header__logo-img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.header__logo-img:hover {
+    transform: scale(1.1);
+}
+
+.header__nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header__link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.header__link:hover {
+    color: #f8e71c;
+}
+
+.header__user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header__btn {
+    padding: 8px 15px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header__btn--login:hover {
+    background-color: #ffffff;
+    color: #6a11cb;
+}
+
+.header__btn--register {
+    background-color: #ffffff;
+    color: #6a11cb;
+}
+
+.header__btn--register:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.header__profile {
+    position: relative;
+}
+
+.header__username-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header__arrow {
+    display: inline-block;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.header__dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #ffffff;
+    color: #6a11cb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+    min-width: 150px;
+    text-align: left;
+}
+
+.header__dropdown-item {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #6a11cb;
+    font-weight: 500;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.header__dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.header__profile.active .header__dropdown {
+    display: block;
+}
+
+.header__profile.active .header__arrow {
+    transform: rotate(-135deg);
+}

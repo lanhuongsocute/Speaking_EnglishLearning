@@ -1,0 +1,38 @@
+<!-- admin_edit_user.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-edituser">
+    <h2>Update User: {{ user.username }}</h2>
+    <form method="POST">
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+
+        <!-- Roles -->
+        <div class="form-group">
+            <label for="is_admin">Roles</label>
+            {% if user.email != 'admin@gmail.com' %}
+                <input type="checkbox" name="is_admin" {% if user.is_admin %}checked{% endif %}> Admin Role
+            {% else %}
+                <p>You can't change role for account: admin@gmail.com</p>
+            {% endif %}
+        </div>
+
+        <!-- Save Button -->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}

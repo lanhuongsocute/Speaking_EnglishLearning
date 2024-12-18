@@ -1,0 +1,132 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Container */
+.container_toppic {
+    background: #ffffff;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6a11cb;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* Button Add Topic */
+.btn-success {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #28a745);
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Table */
+.table {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tr:hover {
+    background-color: #f2f2f2;
+    transition: all 0.3s ease;
+}
+
+/* Image in table */
+.topic_image {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease;
+}
+
+.topic_image:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons for Actions */
+.btn-warning, .btn-danger {
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f0ad4e, #ec971f);
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #ec971f, #f0ad4e);
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    transform: scale(1.05);
+}

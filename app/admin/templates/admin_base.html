@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_dashboard.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {%block head%}{%endblock%}
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="/admin" style="text-decoration: none; color:white">Admin Dashboard</a></h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#user-submenu">User Management</a>
+                    <ul class="list-unstyled submenu" id="user-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.user_list') }}">User List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#topic-submenu">Topic</a>
+                    <ul class="list-unstyled submenu" id="topic-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_add_topic') }}">Add Topic</a></li>
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_topic_list') }}">Topic List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#lesson-submenu">Lesson</a>
+                    <ul class="list-unstyled submenu" id="lesson-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_add_lesson') }}">Add Lesson</a></li>
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_lesson_list') }}">Lesson List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#vocabulary-submenu">Vocabulary</a>
+                    <ul class="list-unstyled submenu" id="vocabulary-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.add_vocabulary') }}">Add Vocabulary</a></li>
+                        <li class="submenu-item"><a href="{{ url_for('admin.vocabulary_list') }}">Vocabulary List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#question-submenu">Question</a>
+                    <ul class="list-unstyled submenu" id="question-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.add_question') }}">Add Question</a></li>
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_question_list') }}">Question List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-menu" data-target="#speaking-challenge-submenu">Speaking Challenge</a>
+                    <ul class="list-unstyled submenu" id="speaking-challenge-submenu" style="display: none;">
+                        <li class="submenu-item"><a href="{{ url_for('admin.add_challenge') }}">Add Challenge</a></li>
+                        <li class="submenu-item"><a href="{{ url_for('admin.admin_challenge_list') }}">List Challenges</a></li>
+                    </ul>
+                </li>
+            </ul>            
+        </div>
+
+        <!-- Main Content -->
+        <div id="page-content-wrapper">
+            <header class="bg-primary py-3">
+                <div class="container">
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-info" id="menu-toggle">Toggle Sidebar</button>
+                        <h3>Admin Panel</h3>
+                    </div>
+                </div>
+            </header>
+            <main class="container mt-4">
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('admin.static', filename='js/admin_script.js') }}"></script>
+</body>
+</html>

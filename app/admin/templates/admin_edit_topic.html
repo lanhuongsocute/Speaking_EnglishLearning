@@ -1,0 +1,43 @@
+<!-- admin_edit_topic.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_topic.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-edittopic">
+    <h1>Update Topic</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Tên chủ đề -->
+        <div class="form-group">
+            <label for="name">Topic Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ topic.name }}" required>
+        </div>
+
+        <!-- Mô tả -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3">{{ topic.description }}</textarea>
+        </div>
+
+        <!-- Ảnh -->
+        <div class="form-group">
+            <label for="image">Image</label>
+            {% if topic.image_url %}
+            <div>
+                <img src="{{ url_for('static', filename='images/' + topic.image_url) }}" alt="Topic Image" width="100">
+            </div>
+            {% endif %}
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+
+        <!-- Nút Update -->
+        <button type="submit" class="btn btn-primary">Update Topic</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+

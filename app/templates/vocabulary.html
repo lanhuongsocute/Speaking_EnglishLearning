@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1 class="main-title">Expand Your Vocabulary</h1>
+            <p class="subtitle">Practice and improve your language skills</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div id="vocab-list" class="vocab-list">
+            {% for vocab in vocabularies %}
+            <div class="vocab-item">
+                <div class="vocab-content">
+                    <h2 class="vocab-word">{{ vocab.word }}</h2>
+                    <p class="vocab-meaning">{{ vocab.meaning }}</p>
+                </div>
+                <div class="vocab-actions">
+                    <button class="btn record" onclick="startRecording({{ loop.index0 }})">🎙️ Record</button>
+                    <button class="btn stop" onclick="stopRecording({{ loop.index0 }})" disabled>🛑 Stop</button>
+                </div>
+                <p id="result-{{ loop.index0 }}" class="result-msg"></p>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="status" class="status"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Vocabulary Practice. Designed with ❤️ for learners.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

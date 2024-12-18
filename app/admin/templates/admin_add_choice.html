@@ -1,0 +1,19 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>Add choice for: "{{ question.content }}"</h3>
+    <form method="POST">
+        <div id="choices-container">
+            <div class="choice-item">
+                <input type="text" name="choices[]" placeholder="Value" required>
+                <input type="radio" name="correct_choice" value="0"> Correct Answer
+                <button type="button" onclick="this.parentElement.remove()">Delete</button>
+            </div>
+        </div>
+        <button type="button" onclick="addChoiceField()">Add Choice</button>
+        <button type="submit">Save Choices</button>
+    </form>
+</div>
+
+{% endblock %}

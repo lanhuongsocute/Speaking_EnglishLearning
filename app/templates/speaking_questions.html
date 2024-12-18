@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Speaking Challenge{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/speaking_question.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="speaking-question-container">
+    <h1>Speaking Challenge</h1>
+    
+    <div class="topic-info">
+        <p><strong>Topic:</strong> {{ topic.name }}</p>
+    </div>
+
+    <div class="speaking-question-section">
+        <h3>Question</h3>
+        <!-- Thêm id để dễ lấy nội dung câu hỏi -->
+        <p id="question-content">{{ question.content }}</p>
+    </div>
+
+    <div class="speaking-hint-section">
+        <h3>Hints</h3>
+        {% for hint in hints %}
+            <div class="hint-content">
+                {{ hint.content }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="challenge-recording">
+        <button id="start-record-btn" class="btn-common">Start Recording</button>
+        <button id="stop-record-btn" class="btn-common" disabled>Stop</button>
+        <button id="save-answer-btn" class="btn-common" disabled>Save Answer</button>
+
+        <!-- Nút submit để chấm điểm -->
+        <button id="submit-scoring" disabled class="btn-common">SUBMIT</button>
+
+        <!-- Khu vực hiển thị kết quả chấm điểm -->
+        <div id="scoring-result" style="margin-top: 20px; display: none;">
+            <h3>Result</h3>
+            <p><strong>Score:</strong> <span id="score-value"></span>/10</p>
+            <p><strong>Feedback:</strong> <span id="feedback-value"></span></p>
+        </div>
+    </div>
+
+    <textarea id="answer-output" placeholder="Your answer will appear here..."></textarea>
+</div>
+
+<script>
+const startButton = document.getElementById('start-record-btn');
+const stopButton = document.getElementById('stop-record-btn');
+const saveButton = document.getElementById('save-answer-btn');
+const submitButton = document.getElementById('submit-scoring');
+const textOutput = document.getElementById('answer-output');
+
+let recognition;
+let isRecording = false;
+let fullTranscript = '';
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event) => {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const transcript = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                fullTranscript += transcript + ' ';
+            } else {
+                interimTranscript += transcript;
+            }
+        }
+        textOutput.value = fullTranscript + interimTranscript;
+    };
+
+    recognition.onerror = (event) => {
+        alert('An error occurred: ' + event.error);
+    };
+} else {
+    alert('Your browser does not support SpeechRecognition API.');
+}
+
+startButton.addEventListener('click', () => {
+    if (!isRecording) {
+        recognition.start();
+        isRecording = true;
+        startButton.disabled = true;
+        stopButton.disabled = false;
+    }
+});
+
+stopButton.addEventListener('click', () => {
+    if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        saveButton.disabled = false;
+        submitButton.disabled = false; // Cho phép chấm điểm sau khi có kết quả
+    }
+});
+
+saveButton.addEventListener('click', () => {
+    const text = fullTranscript.trim();
+    const blob = new Blob(['\ufeff' + text], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Speaking_Answer.doc';
+    link.click();
+
+    URL.revokeObjectURL(url);
+});
+
+// Xử lý submit để chấm điểm
+submitButton.addEventListener('click', async () => {
+    const question = document.getElementById('question-content').textContent.trim();
+    // Lấy tất cả các hint
+    const hintElements = document.querySelectorAll('.hint-content');
+    const hints = Array.from(hintElements).map(el => el.textContent.trim());
+
+    const answer = textOutput.value.trim();
+    if (!answer) {
+        alert('Please provide an answer before submitting.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/score_answer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question, hints, answer }),
+        });
+
+        const data = await response.json();
+        if (response.ok && data.score !== undefined && data.feedback !== undefined) {
+            document.getElementById('score-value').textContent = data.score;
+            document.getElementById('feedback-value').textContent = data.feedback;
+            document.getElementById('scoring-result').style.display = 'block';
+        } else {
+            alert(data.error || 'Failed to get score. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error scoring answer:', error);
+        alert('An error occurred. Please try again.');
+    }
+});
+</script>
+{% endblock %}

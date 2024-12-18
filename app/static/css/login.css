@@ -1,0 +1,112 @@
+/* login.css */
+
+/* Đảm bảo không ảnh hưởng đến header */
+
+
+/* Main container */
+.login-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Form styles */
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #6a1b9a; /* Tím đậm */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #6a1b9a;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #a18cd1;
+  box-shadow: 0 0 8px rgba(161, 140, 209, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(to right, #a18cd1, #fbc2eb); /* Gradient tím */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(161, 140, 209, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Redirect link */
+.redirect-link {
+  margin-top: 15px;
+  text-align: center;
+  color: #6a1b9a;
+  font-size: 14px;
+}
+
+.redirect-link a {
+  color: #a18cd1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.redirect-link a:hover {
+  text-decoration: underline;
+}
+
+/* Flash messages */
+.flash {
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.flash-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

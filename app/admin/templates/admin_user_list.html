@@ -1,0 +1,53 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_user_list.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-userlist">
+    <h1>User List</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Avatar</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.is_admin %}
+                        <span class="badge bg-success">Admin</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">User</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <img src="{{ url_for('static', filename='images/' + user.image_url if user.image_url else 'default.jpg') }}"
+                         alt="User Avatar" width="80" height="80" class="avatar">
+                </td>
+                <td>
+                    <a href="{{ url_for('admin.edit_user', user_id=user.id) }}" class="btn btn-primary btn-sm">Edit</a>
+                    <form method="POST" action="{{ url_for('admin.delete_user', user_id=user.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{{ url_for('admin.static', filename='js/admin_script.js') }}"></script>
+
+</div>
+{% endblock %}

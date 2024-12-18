@@ -1,0 +1,40 @@
+<!-- admin_edit_question.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_question.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-editques">
+    <h2>Edit Question</h2>
+    <form method="POST">
+        <!-- Nội dung câu hỏi -->
+        <label>Question:
+            <textarea name="content" required>{{ question.content }}</textarea>
+        </label>
+
+        <!-- Bài học -->
+        <label>Lesson:
+            <select name="lesson_id" required>
+                {% for lesson in lessons %}
+                <option value="{{ lesson.id }}" {% if lesson.id == question.lesson_id %}selected{% endif %}>
+                    {{ lesson.title }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Loại câu hỏi -->
+        <label>Question Type:
+            <select name="question_type">
+                <option value="text" {% if question.question_type == 'text' %}selected{% endif %}>Essay</option>
+                <option value="multiple-choice" {% if question.question_type == 'multiple-choice' %}selected{% endif %}>Multiple Choice</option>
+            </select>
+        </label>
+
+        <!-- Nút Update -->
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- teamlate admin_add_vocablary.html -->
+ 
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_vocabulary.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-vob">
+    <h1>Add New Vocabulary</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Topic:
+            <select name="topic_id" required>
+                {% for topic in topics %}
+                    <option value="{{ topic.id }}">{{ topic.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Word: <input type="text" name="word" required></label>
+        <label>Meaning: <input type="text" name="meaning" required></label>
+        <button type="submit">Add Vocabulary</button>
+    </form>
+</div>
+{% endblock %}

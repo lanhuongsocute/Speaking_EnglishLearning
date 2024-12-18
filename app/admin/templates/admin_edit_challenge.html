@@ -1,0 +1,46 @@
+<!-- admin_edit_challenge.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_challenge.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-editchall mt-4">
+    <h2>Edit Challenge</h2>
+    <form method="POST">
+        <!-- Question -->
+        <div class="form-group">
+            <label for="question">Question</label>
+            <textarea name="question" id="question" class="form-control" rows="3" required>{{ challenge.content }}</textarea>
+        </div>
+
+        <!-- Topic -->
+        <div class="form-group">
+            <label for="topic">Topic</label>
+            <select name="topic" id="topic" class="form-control" required>
+                {% for topic in topics %}
+                <option value="{{ topic.id }}" {% if topic.id == challenge.topic_id %}selected{% endif %}>
+                    {{ topic.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Hints -->
+        <div class="form-group">
+            <label>Hints</label>
+            {% for idx, hint in hints %}
+            <div>
+                <label for="hint{{ idx }}">Hint {{ idx }}</label>
+                <input type="text" name="hint{{ idx }}" id="hint{{ idx }}" class="form-control" value="{{ hint.content }}" required>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{{ url_for('admin.admin_challenge_list') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

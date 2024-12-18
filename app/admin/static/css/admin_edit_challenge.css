@@ -1,0 +1,110 @@
+.container-editchall {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+textarea, select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea:focus, select:focus, input[type="text"]:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    outline: none;
+}
+
+/* Nút hành động */
+button[type="submit"], .btn-secondary {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #5cb85c, #4cae4c);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #4cae4c, #5cb85c);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(92, 184, 92, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #495057, #6c757d);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    button[type="submit"], .btn-secondary {
+        font-size: 12px;
+        padding: 10px;
+    }
+}

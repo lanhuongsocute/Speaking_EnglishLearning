@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{%block head%}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock%}
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to the English Speaking Practice Platform</h1>
+        <p>Improve your English skills with our tools: speech-to-text, challenges, and more!</p>
+        <a href="{{ url_for('topics') }}" class="btn-primary">Get Started</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <h2 class="section-title">Our Features</h2>
+    <div class="features-container">
+        <div class="feature-card">
+            <h3>Topics</h3>
+            <p>Explore various topics to practice speaking and enhance your vocabulary.</p>
+            <a href="{{ url_for('topics') }}" class="btn-secondary">Explore</a>
+        </div>
+        <div class="feature-card">
+            <h3>MP3 to Text</h3>
+            <p>Convert audio files to text using our advanced speech recognition tool.</p>
+            <a href="{{ url_for('speech_to_text') }}" class="btn-secondary">Try It</a>
+        </div>
+        <div class="feature-card">
+            <h3>Speaking Challenge</h3>
+            <p>Test your skills with speaking challenges and see your progress.</p>
+            <a href="{{ url_for('speaking_challenge') }}" class="btn-secondary">Take Challenge</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <h2>Ready to Improve Your English?</h2>
+    <p>Join now and start your journey to becoming a fluent English speaker.</p>
+    <a href="{{ url_for('register') }}" class="btn-primary">Join Now</a>
+</section>
+{% endblock %}

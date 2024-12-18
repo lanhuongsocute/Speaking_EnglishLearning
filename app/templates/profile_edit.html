@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile - Vocabulary Practice{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile_edit.css') }}" />
+{% endblock %}
+{% block content %}
+<div class="profile-edit-container">
+  <h1>Edit Your Profile</h1>
+  <form method="POST" enctype="multipart/form-data" class="profile-edit-form">
+    <!-- Avatar -->
+    <div class="form-group">
+      <div class="current-avatar">
+        <img id="avatarPreview" src="{{ url_for('static', filename='images/' + (user.image_url if user.image_url else 'default.jpg')) }}" alt="Current Avatar" class="profile__image" />
+      </div>
+      <input type="file" name="image_url" id="image_url" accept="image/*" style="display:none;" onchange="previewImage(event)" />
+      <label for="image_url" class="upload-avatar-btn">
+        <i class="fa fa-camera"></i> Change Avatar
+      </label>
+    </div>
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" value="{{ user.username }}" required />
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" value="{{ user.email }}" required />
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">New Password:</label>
+      <input type="password" name="password" id="password" />
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirm_password">Confirm New Password:</label>
+      <input type="password" name="confirm_password" id="confirm_password" />
+    </div>
+
+    <button type="submit" class="btn">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

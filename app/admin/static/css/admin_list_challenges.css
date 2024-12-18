@@ -1,0 +1,101 @@
+/* Container chính */
+.container-challenges {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tiêu đề */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6a11cb;
+    margin-bottom: 20px;
+}
+
+/* Bảng hiển thị dữ liệu */
+.table {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background 0.3s ease;
+}
+
+/* Nút hành động */
+.btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f0ad4e, #ec971f);
+    color: #fff;
+    border: none;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #ec971f, #f0ad4e);
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    transform: scale(1.05);
+}
+
+/* Responsive thiết kế */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}

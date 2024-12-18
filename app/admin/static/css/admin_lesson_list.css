@@ -1,0 +1,108 @@
+/* Container chính */
+.row {
+    margin-top: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Tiêu đề */
+h5 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #6a11cb;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Bảng */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 12px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background 0.3s ease;
+}
+
+/* Hình ảnh trong bảng */
+.lesson_image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.lesson_image:hover {
+    transform: scale(1.1);
+}
+
+/* Nút Actions */
+.btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f0ad4e, #ec971f);
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #ec971f, #f0ad4e);
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .lesson_image {
+        width: 60px;
+        height: 40px;
+    }
+}

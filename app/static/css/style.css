@@ -1,0 +1,556 @@
+/* Body and Global Styles */
+body {
+    margin: 0;
+    display: flex; /* Dùng Flexbox cho body */
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+main {
+    flex: 1; /* Phần này sẽ chiếm không gian còn lại */
+}
+
+a{
+    text-decoration: none;
+}
+/* ---------------------------------------------------Header------------------------------------------------------ */
+header {
+    background-color: #003366; /* Màu nền header tối hơn để nổi bật */
+    color: #ffffff; /* Chữ màu trắng để dễ đọc */
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Container trong header */
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tiêu đề chính của Header */
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Kích thước chữ tiêu đề lớn hơn một chút */
+    font-weight: bold; /* Chữ đậm */
+}
+
+/* Điều chỉnh phần điều hướng (nav) */
+header nav {
+    margin-top: 10px;
+}
+
+/* Các link trong nav */
+header nav a {
+    color: #ffffff; /* Màu chữ trắng */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    margin: 0 15px; /* Khoảng cách giữa các link */
+    font-size: 1.2em;
+    transition: color 0.3s, transform 0.3s; /* Thêm hiệu ứng chuyển màu và biến dạng khi hover */
+}
+
+nav .logo img {
+    height: 40px; /* Điều chỉnh kích thước logo */
+    margin-right: 20px; /* Khoảng cách giữa logo và các liên kết */
+}
+
+/* Màu chữ khi hover trên các link */
+header nav a:hover {
+    color: #f1c40f; /* Màu vàng cho hiệu ứng hover */
+}
+
+/* ---------------------------------------------------Style chung cho các button--------------------------------------------------- */
+button {
+    background-color: #4CAF50; /* Màu nền xanh lá */
+    color: white;              /* Màu chữ trắng */
+    border: none;              /* Loại bỏ viền */
+    padding: 10px 20px;        /* Khoảng cách trong nút */
+    text-align: center;        /* Căn giữa chữ */
+    text-decoration: none;     /* Loại bỏ gạch chân */
+    display: inline-block;     /* Hiển thị inline */
+    font-size: 16px;           /* Kích thước chữ */
+    margin: 5px 10px;          /* Khoảng cách giữa các nút */
+    cursor: pointer;          /* Con trỏ chuột thay đổi khi hover */
+    border-radius: 5px;        /* Bo tròn các góc của nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền khi hover */
+}
+
+/* Style cho button "Login" */
+#login-btn {
+    background-color: #4CAF50; /* Màu nền xanh lá cho nút Login */
+}
+
+#login-btn:hover {
+    background-color: #45a049; /* Màu nền tối hơn khi hover */
+}
+
+/* Style cho button "Register" */
+#register-btn {
+    background-color: #007bff; /* Màu nền xanh dương cho nút Register */
+}
+
+#register-btn:hover {
+    background-color: #0056b3; /* Màu nền tối hơn khi hover */
+}
+
+/* ---------------------------------------------------Hero Section--------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+/* ---------------------------------------------------Topic List--------------------------------------------------- */
+.topic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.topic-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.topic-item:hover {
+    transform: scale(1.05);
+}
+
+.topic-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.topic-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.topic-title {
+    font-size: 1.5rem;
+    color: #4834d4;
+    margin-bottom: 10px;
+}
+
+.topic-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------lesson List--------------------------------------------------- */
+.lesson-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.lesson-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.lesson-item:hover {
+    transform: scale(1.05);
+}
+
+.lesson-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.lesson-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.lesson-title {
+    font-size: 1.5rem;
+    color: #4834d4;
+    margin-bottom: 10px;
+}
+
+.lesson-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+/* ---------------------------------------------------Lesson detail--------------------------------------------------- */
+.questions {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.question-item {
+    margin-bottom: 20px;
+}
+
+.question-item p {
+    text-align: left; /* Căn trái câu hỏi */
+}
+
+.choices {
+    margin: 10px 0;
+    padding-left: 20px;
+    list-style-type: none;
+    text-align: left;
+}
+
+.choices li {
+    margin: 5px 0;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.feedback {
+    font-weight: bold;
+    margin-top: 5px;
+}
+.choice-select {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1em;
+}
+
+* Tổng quan cho trạng thái hoàn thành */
+#completion-status {
+    margin: 20px 0;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Khi Lesson Completed */
+#completion-status .text-success {
+    color: #28a745; /* Màu xanh thành công */
+    background-color: #e6f9e9; /* Màu nền nhạt */
+    border: 1px solid #28a745;
+    padding: 10px;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out; /* Hiệu ứng nhẹ nhàng */
+    text-align: center;
+}
+
+/* Khi Lesson Not Completed Yet */
+#completion-status .text-warning {
+    text-align: center;
+    color: #ffc107; /* Màu vàng cảnh báo */
+    background-color: #fff8e1; /* Màu nền nhạt */
+    border: 1px solid #ffc107;
+    padding: 10px;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out; /* Hiệu ứng nhẹ nhàng */
+}
+
+/* Hiệu ứng fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hiệu ứng cho đáp án sai */
+.wrong-answer {
+    background-color: #ffcccb; /* Màu đỏ nhạt */
+    color: red;
+}
+
+/* Hiệu ứng cho đáp án đúng (nếu cần hiển thị sau này) */
+.correct-answer {
+    background-color: transparent;
+    color: green;
+}
+
+/* ---------------------------------------------------Vocab List--------------------------------------------------- */
+.vocab-list {
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.vocab-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vocab-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.vocab-content {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.vocab-word {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+}
+
+.vocab-meaning {
+    font-size: 1em;
+    margin-top: 5px;
+    color: #666;
+}
+
+.vocab-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #8e54e9, #4776e6);
+}
+
+.result-msg {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.status {
+    margin-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+}
+/* Mp3 to text */
+#upload-button {
+    background-color: #4776e6;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#upload-button:hover {
+    background-color: #45a049;
+}
+
+.status_mp3 {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Mp3 to text */
+.mp3-converter-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title */
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #4a00e0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(45deg, #4a00e0, #8e2de2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-bottom: 30px;
+}
+
+.upload-label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.file-input {
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.file-input:focus {
+    border-color: #4a00e0;
+    box-shadow: 0 0 5px rgba(74, 0, 224, 0.4);
+}
+
+/* Convert Button */
+.btn-convert {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #4a00e0, #8e2de2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-convert:hover {
+    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+    transform: translateY(-3px);
+}
+
+/* Status Text */
+.status {
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Converted Text */
+.converted-title {
+    font-size: 24px;
+    color: #4a00e0;
+    margin-bottom: 10px;
+}
+
+.converted-text {
+    font-size: 18px;
+    color: #666;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#text-output{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Audio Section */
+.audio-section {
+    margin-top: 20px;
+}
+
+audio {
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* ---------------------------------------------------Footer--------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2em;
+    }
+    .subtitle {
+        font-size: 1em;
+    }
+    .vocab-word {
+        font-size: 1.2em;
+    }
+}
+
+

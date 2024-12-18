@@ -1,0 +1,253 @@
+{% extends 'base.html' %} {% block title %}AI Speaking Practice{% endblock %} {%
+block content %}
+<div id="game-container">
+  <!-- Bot Greeting -->
+  <div id="bot">
+    <img
+      src="https://i.pinimg.com/originals/33/ce/c0/33cec014ab407413192071c924c37407.gif"
+      alt="AI Bot"
+      class="bot-image"
+    />
+    <h1>Welcome to AI Speaking Practice!</h1>
+    <p id="bot-message">Are you ready to start?</p>
+    <button id="start-btn" onclick="startGame()">I'm Ready!</button>
+  </div>
+
+  <!-- Game Area -->
+  <div id="game-area" style="display: none">
+    <div class="question-box">
+      <p id="question">Loading question...</p>
+    </div>
+    <div class="controls">
+      <button id="record-btn" onclick="startRecording()">
+        🎙️ Start Recording
+      </button>
+      <button id="stop-btn" style="display: none" onclick="stopRecording()">
+        🛑 Stop Recording
+      </button>
+    </div>
+    <div id="result-area" style="display: none">
+      <p>Your Answer:</p>
+      <textarea id="transcript" readonly></textarea>
+      <div id="audio-controls" style="display: none">
+        <p>Play your recording:</p>
+        <audio id="audio-player" controls></audio>
+      </div>
+      <div class="buttons">
+        <button onclick="retryQuestion()">🔄 Retry</button>
+        <button onclick="nextQuestion()">➡️ Next Question</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #6a11cb;
+    color: #333;
+  }
+
+  #game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+  }
+
+  .bot-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #ff8c00;
+  }
+
+  .question-box {
+    background: #f0f8ff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #ff8c00;
+  }
+
+  textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+</style>
+
+<!-- JavaScript -->
+<script>
+  const questions = [
+    // Personal Information
+    "What’s your name?",
+    "What’s your full name?",
+    "Where are you from?",
+    "When were you born? = What’s your date of birth?",
+    "Are you a student?",
+    "Where do you study? = Where are you studying?",
+    "How do you go/get to college (school)?",
+    "How many people (members) are there in your family?",
+    "Who are they?",
+    "What does your father do? = What’s your father’s job?",
+
+    // Career and Jobs
+    "What is your major?",
+    "How do you do to apply for that job?",
+    "What kind of job do you want to do when you finish your study in Angiang University?",
+    "Where do you want to work after your graduation?",
+    "What do you say in your job interview?",
+    "How can English help you in your job?",
+    "Why do you want to do that job?",
+    "How much salary do you want to be paid every month when you apply for a job?",
+    "How do you do to have a job interview?",
+    "According to you, what is the most important qualification for an employee?",
+
+    // Media
+    "In your opinion, what is 'Media'?",
+    "How do you use media to help yourself in life and study?",
+    "What do you often do on the internet?",
+    "How much money do you spend on your handphone in a month?",
+    "Do you know how to use the internet?",
+    "Can you explain the reason why you like it?",
+    "What kind of media do you often use in your daily life?",
+    "What kinds of media do you know?",
+
+    // Environmental Pollution
+    "According to you, what should we do to solve air pollution?",
+    "Why is air polluted?",
+    "What is the outcome of water pollution?",
+    "Why are the water resources polluted?",
+    "In your opinion, what is pollution?",
+    "Who are responsible for water pollution?",
+    "How many major kinds of pollution?",
+
+    // City vs. Countryside
+    "What are disadvantages of living in a city?",
+    "What should we do to overcome disadvantages of life in the countryside?",
+    "Where are you from?",
+    "What are disadvantages of living in the countryside?",
+    "What do you think about your homeland?",
+    "What should we do to overcome disadvantages of life in a city?",
+    "Why do you like living there?",
+
+    // English Language
+    "Do you think it is easy to learn English?",
+    "Why do you learn English?",
+    "How is English helpful to you in the present time?",
+    "How do you do to overcome your difficulties in learning English?",
+    "Which skill in English are you good at?",
+    "According to you, which language skill is the most difficult in English-learning?",
+  ];
+
+  let currentQuestionIndex = -1;
+  let recognition;
+
+  // Start the game
+  function startGame() {
+    document.getElementById("bot-message").innerText =
+      "Listen to the question and answer!";
+    document.getElementById("start-btn").style.display = "none";
+    document.getElementById("game-area").style.display = "block";
+    nextQuestion();
+  }
+
+  // Display the next question
+  function nextQuestion() {
+    currentQuestionIndex = Math.floor(Math.random() * questions.length);
+    const question = questions[currentQuestionIndex];
+    document.getElementById("question").innerText = question;
+    document.getElementById("result-area").style.display = "none";
+
+    // Read question aloud
+    const utterance = new SpeechSynthesisUtterance(question);
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Start recording with Web Speech API
+  function startRecording() {
+    if (!("webkitSpeechRecognition" in window)) {
+      alert("Speech Recognition is not supported in your browser.");
+      return;
+    }
+
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      document.getElementById("record-btn").style.display = "none";
+      document.getElementById("stop-btn").style.display = "inline-block";
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById("transcript").value = transcript;
+      document.getElementById("result-area").style.display = "block";
+    };
+
+    recognition.onerror = (event) => {
+      alert("An error occurred during recognition: " + event.error);
+    };
+
+    recognition.onend = () => {
+      document.getElementById("stop-btn").style.display = "none";
+      document.getElementById("record-btn").style.display = "inline-block";
+    };
+
+    recognition.start();
+  }
+
+  // Stop recording
+  function stopRecording() {
+    if (recognition) {
+      recognition.stop();
+    }
+  }
+
+  // Retry question
+  function retryQuestion() {
+    document.getElementById("transcript").value = "";
+    document.getElementById("result-area").style.display = "none";
+    startRecording();
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Profile - Vocabulary Practice{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" />
+{% endblock %}
+{% block content %}
+<div class="profile">
+  <div class="profile__header">
+    <h1>Welcome, {{ session.get('username') }}</h1>
+    <p class="profile__email">{{ session.get('email') }}</p>
+  </div>
+
+  <div class="profile__container">
+    <div class="profile__section">
+      <h2>Your Information</h2>
+      <ul class="profile__info">
+        <!-- Sử dụng image_url của người dùng, nếu không có sẽ sử dụng ảnh mặc định -->
+        <img src="{{ url_for('static', filename='images/' + (user.image_url if user.image_url else 'default.jpg')) }}" alt="{{ user.username }}" class="profile__image">
+        <li><strong>Username:</strong> {{ user.username }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Joined:</strong> {{ user.created_at.strftime('%B %d, %Y') }}</li>
+      </ul>
+    </div>
+
+    <div class="profile__actions">
+      <a href="{{ url_for('profile_edit') }}" class="profile__btn profile__btn--edit">Edit Profile</a>
+      <a href="{{ url_for('logout') }}" class="profile__btn profile__btn--logout">Logout</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

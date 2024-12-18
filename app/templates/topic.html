@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Topics - Vocabulary Practice{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <div class="container">
+            <h1 class="main-title">Explore Topics</h1>
+            <p class="subtitle">Choose a topic to view lessons and exercises</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div id="topic-list" class="topic-list">
+            {% for topic in topics %}
+            <div class="topic-item">
+                <img src="{{ url_for('static', filename='images/' + topic.image_url if topic.image_url else 'images/default.jpg') }}" alt="{{ topic.name }}" class="topic-image">
+                <div class="topic-content">
+                    <h2 class="topic-title">{{ topic.name }}</h2>
+                    <p class="topic-description">{{ topic.description }}</p>
+                    <a href="{{ url_for('view_lessons', topic_id=topic.id) }}" class="btn start-learning">View Lessons</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,216 @@
+/* Reset cơ bản */
+body, h1, h3, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container chính */
+.speaking-question-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+/* Tiêu đề chính */
+.speaking-question-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: -webkit-linear-gradient(45deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Topic Section */
+.topic-info p {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Question Section */
+.speaking-question-section {
+    background: #f9f9f9;
+    border-left: 5px solid #6a11cb;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.speaking-question-section h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.speaking-question-section p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Hints Section */
+.speaking-hint-section {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.speaking-hint-section h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.hint-content {
+    background: #e3f2fd;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hint-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: #d1ecf1;
+}
+
+/* Buttons */
+.challenge-recording {
+    margin: 20px 0;
+}
+
+.btn-common {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-common:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-common:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Textarea */
+#answer-output {
+    width: 95%;
+    height: 150px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+    color: #333;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#answer-output:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .speaking-question-container {
+        padding: 20px;
+    }
+
+    .btn-common {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #answer-output {
+        height: 120px;
+    }
+}
+
+#scoring-result {
+    display: none; /* Mặc định ẩn, sẽ được hiển thị khi có dữ liệu */
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #f9f9f9, #ececec);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#scoring-result h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+#scoring-result p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #444;
+}
+
+#scoring-result strong {
+    color: #555;
+    font-weight: 600;
+}
+
+#score-value {
+    font-weight: 700;
+    color: #007bff;
+    font-size: 1.3em;
+}
+
+#feedback-value {
+    font-style: italic;
+    color: #666;
+    /* display: inline-block; */
+    /* margin-left: 5px; */
+}
+
+/* Hiệu ứng xuất hiện nhẹ nhàng */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_add_topic.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-addtopic">
+    <h1>Add Topic</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Tên Topic -->
+        <div class="form-group">
+            <label for="name">Topic Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <!-- Mô tả Topic -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+
+        <!-- Hình ảnh Topic -->
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+
+        <!-- Nút Submit -->
+        <button type="submit" class="btn btn-primary">Add Topic</button>
+    </form>
+</div>
+{% endblock %}

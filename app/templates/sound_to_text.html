@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Topics - Vocabulary Practice{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="mp3-converter-container">
+            <h1 class="title">Convert MP3 to Text</h1>
+            <div class="upload-section">
+                <label for="file-input" class="upload-label">Choose an MP3 file to convert</label>
+                <input type="file" id="file-input" class="file-input" accept=".mp3">
+                <button id="upload-button" class="btn-convert">Upload and Convert</button>
+            </div>
+            <p id="status" class="status">Status: Idle</p>
+        
+            <h2 class="converted-title">Converted Text:</h2>
+            <p id="text-output" class="converted-text">No text detected</p>
+        
+            <div class="audio-section">
+                <audio id="audio-player" controls style="display:none;">
+                    <source id="audio-source" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

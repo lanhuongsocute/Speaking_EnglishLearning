@@ -1,0 +1,101 @@
+
+.container-admin {
+    text-align: center;
+    padding: 10px 30px;
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #5615c5;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #1050f4;
+    animation: fadeIn 1.2s ease-in-out;
+}
+a {
+    text-decoration: none;
+}
+/* Admin Image */
+.admin-image {
+    width: 50%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: zoomIn 1s ease-in-out;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #5a0cc0, #1764ca);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1764ca, #5a0cc0);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 120, 150, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h4 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .admin-image {
+        width: 80%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}

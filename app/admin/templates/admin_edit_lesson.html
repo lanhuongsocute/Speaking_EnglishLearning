@@ -1,0 +1,61 @@
+<!-- admin_edit_lession.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_lesson.css') }}">
+<script>
+    function toggleFormFields() {
+        const lessonType = document.getElementById('lesson_type').value;
+        const normalFields = document.getElementById('normal_fields');
+        normalFields.style.display = lessonType === 'normal' ? 'block' : 'none';
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container-editlession">
+    <h1>Edit Lesson</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Lesson Type -->
+        <label>Lesson Type:
+            <select id="lesson_type" name="lesson_type" onchange="toggleFormFields()" required>
+                <option value="normal" {% if lesson.lesson_type == 'normal' %}selected{% endif %}>Normal</option>
+                <option value="vocabulary" {% if lesson.lesson_type == 'vocabulary' %}selected{% endif %}>Vocabulary</option>
+            </select>
+        </label>
+
+        <!-- Topic -->
+        <label>Topic:
+            <select name="topic_id" required>
+                {% for topic in topics %}
+                <option value="{{ topic.id }}" {% if topic.id == lesson.topic_id %}selected{% endif %}>
+                    {{ topic.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Normal Fields -->
+        <div id="normal_fields" {% if lesson.lesson_type == 'vocabulary' %}style="display:none;"{% endif %}>
+            <label>Title:
+                <input type="text" name="title" value="{{ lesson.title }}" required>
+            </label>
+            <label>Content:
+                <textarea name="content" required>{{ lesson.content }}</textarea>
+            </label>
+        </div>
+
+        <!-- Image -->
+        <label for="image">Image</label>
+        {% if lesson.image_url %}
+        <div>
+            <img src="{{ url_for('static', filename='images/' + lesson.image_url) }}" alt="Lesson Image" width="100">
+        </div>
+        {% endif %}
+        <input type="file" class="form-control-file" id="image" name="image">
+
+        <!-- Submit Button -->
+        <button type="submit">Update</button>
+    </form>
+</div>
+{% endblock %}

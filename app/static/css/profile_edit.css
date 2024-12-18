@@ -1,0 +1,111 @@
+.current-avatar {
+    text-align: center;
+}
+.profile__image {
+    width: 120px; /* Chiều rộng của ảnh */
+    height: 120px; /* Chiều cao của ảnh */
+    border-radius: 50%; /* Tạo viền tròn */
+    object-fit: cover; /* Giữ tỉ lệ hình ảnh và cắt bớt phần thừa */
+    border: 4px ridge #3498db; /* Viền xung quanh ảnh */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho ảnh */
+    transition: all 0.3s ease; /* Hiệu ứng khi hover */
+  }
+  
+  /* Hiệu ứng khi hover vào ảnh */
+  .profile__image:hover {
+    transform: scale(1.1); /* Phóng to ảnh một chút */
+    border-color: #2980b9; /* Đổi màu viền khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng độ đổ bóng khi hover */
+  }
+
+  .upload-avatar-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-avatar-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .upload-avatar-btn i {
+    margin-right: 5px;
+  }
+.profile-edit-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-edit-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6a1b9a;
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn {
+    background: linear-gradient(to right, #6a1b9a, #ab47bc);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #4a148c, #8e24aa);
+}
+
+.flash {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.flash-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.flash-error {
+    background: #f8d7da;
+    color: #721c24;
+}

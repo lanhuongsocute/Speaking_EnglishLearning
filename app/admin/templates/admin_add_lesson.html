@@ -1,0 +1,45 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_add_lesson.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<div class="container-lesson">
+    <h1>Add Lesson</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Chọn loại bài học -->
+        <label for="lesson_type">Lesson Type:
+            <select id="lesson_type" name="lesson_type" onchange="toggleFormFields()" required>
+                <option value="normal">Normal</option>
+                <option value="vocabulary">Vocabulary</option>
+            </select>
+        </label>
+
+        <!-- Chọn chủ đề -->
+        <label for="topic_id">Topic:
+            <select name="topic_id" id="topic_id" required>
+                {% for topic in topics %}
+                <option value="{{ topic.id }}">{{ topic.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Các trường cho bài tập Normal -->
+        <div id="normal_fields">
+            <label for="title">Title:
+                <input type="text" id="title" name="title" required>
+            </label>
+            <label for="content">Content:
+                <textarea id="content" name="content" rows="4" required></textarea>
+            </label>
+            <label for="file">Image:
+                <input type="file" id="file" name="file">
+            </label>
+        </div>
+        <!-- Nút Submit -->
+        <button type="submit">Add Lesson</button>
+    </form>
+</div>
+{% endblock %}

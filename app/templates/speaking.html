@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Speaking Practice{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/speaking.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="speaking-container">
+    <h1>Choose a Topic</h1>
+    <div class="topics">
+        {% for topic in topics %}
+        <div class="topic">
+            <img src="{{ url_for('static', filename='images/' + topic.image_url if topic.image_url else 'images/default.jpg') }}" alt="{{ topic.name }}" class="topic-image">
+            <h2>{{ topic.name }}</h2>
+            <p>{{ topic.description }}</p>
+            <a href="{{ url_for('speaking_questions', topic_id=topic.id) }}" class="btn">Start</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,32 @@
+<!-- template admin_add_question.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_question.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-ques">
+    <h2>Add New Question</h2>
+    <form method="POST">
+        <label>Question:
+            <textarea name="content" required></textarea>
+        </label>
+        <label>Lesson:
+            <select name="lesson_id" required>
+                {% for lesson in lessons %}
+                    <option value="{{ lesson.id }}">{{ lesson.title }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Question Type:
+            <select name="question_type">
+                <option value="text">Essay</option>
+                <option value="multiple-choice">Multiple Choice</option>
+            </select>
+        </label>
+        <button type="submit" name="add_choice" value="false">Add Question</button>
+        <button type="submit" name="add_choice" value="true">Add Question & Add Choice</button>
+    </form>
+</div>
+{% endblock %}

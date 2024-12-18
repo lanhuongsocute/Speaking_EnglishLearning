@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Lessons for {{ topic.name }}{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1 class="main-title">Lessons for {{ topic.name }}</h1>
+        <p class="subtitle">{{ topic.description }}</p>
+    </div>
+</div>
+
+<main class="container">
+    <div id="lesson-list" class="lesson-list">
+        {% for lesson in lessons %}
+        <div class="lesson-item">
+            <img src="{{ url_for('static', filename='images/' + (lesson.image_url or 'images/default.jpg')) }}" 
+                 alt="{{ lesson.title }}" 
+                 class="lesson-image">
+            <div class="lesson-content">
+                <h2 class="lesson-title">
+                    {{ lesson.title }}
+
+                </h2>
+                <p class="lesson-description">{{ lesson.content[:100] }}...</p>
+                <a href="{{ url_for('lesson_details', lesson_id=lesson.id) }}" class="btn btn-primary">View Details</a>
+                {% if lesson.id in completed_lessons %}
+                    <span class="badge badge-success">✔️ Completed</span>
+                {% endif %} 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

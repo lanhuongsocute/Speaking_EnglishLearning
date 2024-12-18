@@ -1,0 +1,44 @@
+<!-- Template admin_edit_vocablary.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_edit_vocabulary.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-editvob">
+    <h1>Edit Vocabulary</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Từ vựng -->
+        <label>Word:
+            <input type="text" name="word" value="{{ vocabulary.word }}" required>
+        </label>
+
+        <!-- Ý nghĩa -->
+        <label>Meaning:
+            <input type="text" name="meaning" value="{{ vocabulary.meaning }}" required>
+        </label>
+
+        <!-- Chủ đề -->
+        <label>Topic:
+            <select name="topic_id" required>
+                {% for topic in topics %}
+                    <option value="{{ topic.id }}" {% if topic.id == vocabulary.topic_id %}selected{% endif %}>
+                        {{ topic.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Nút Update -->
+        <button type="submit">Update</button>
+    </form>
+
+    <!-- Form Xóa -->
+    <form method="POST" action="{{ url_for('admin.delete_vocabulary', vocabulary_id=vocabulary.id) }}">
+        <button type="submit" class="delete-btn">Delete Vocabulary</button>
+    </form>
+</div>
+{% endblock %}
+
+

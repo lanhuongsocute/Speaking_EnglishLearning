@@ -1,0 +1,129 @@
+/* profile.css */
+
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.profile {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile__header {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+.profile__header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile__header p {
+    font-size: 16px;
+    margin: 5px 0 0;
+}
+
+.profile__container {
+    padding: 30px;
+}
+
+.profile__section {
+    margin-bottom: 20px;
+}
+
+.profile__section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #6a11cb;
+}
+
+/* Định dạng cho ảnh người dùng */
+.profile__image {
+  width: 120px; /* Chiều rộng của ảnh */
+  height: 120px; /* Chiều cao của ảnh */
+  border-radius: 50%; /* Tạo viền tròn */
+  object-fit: cover; /* Giữ tỉ lệ hình ảnh và cắt bớt phần thừa */
+  border: 4px solid #3498db; /* Viền xung quanh ảnh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho ảnh */
+  transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+/* Hiệu ứng khi hover vào ảnh */
+.profile__image:hover {
+  transform: scale(1.1); /* Phóng to ảnh một chút */
+  border-color: #2980b9; /* Đổi màu viền khi hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng độ đổ bóng khi hover */
+}
+/* Định dạng cho ảnh người dùng */
+.profile__image {
+    width: 120px; /* Chiều rộng của ảnh */
+    height: 120px; /* Chiều cao của ảnh */
+    border-radius: 50%; /* Tạo viền tròn */
+    object-fit: cover; /* Giữ tỉ lệ hình ảnh và cắt bớt phần thừa */
+    border: 4px ridge #3498db; /* Viền xung quanh ảnh */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho ảnh */
+    transition: all 0.3s ease; /* Hiệu ứng khi hover */
+  }
+  
+  /* Hiệu ứng khi hover vào ảnh */
+  .profile__image:hover {
+    transform: scale(1.1); /* Phóng to ảnh một chút */
+    border-color: #2980b9; /* Đổi màu viền khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng độ đổ bóng khi hover */
+  }
+  
+.profile__info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8;
+}
+
+.profile__info li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.profile__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile__btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.profile__btn--edit {
+    background: #4caf50;
+}
+
+.profile__btn--edit:hover {
+    background: #45a049;
+}
+
+.profile__btn--logout {
+    background: #f44336;
+}
+
+.profile__btn--logout:hover {
+    background: #d32f2f;
+}

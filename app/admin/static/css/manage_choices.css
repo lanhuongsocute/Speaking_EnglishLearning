@@ -1,0 +1,134 @@
+/* Container chính */
+.container-choices {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #6a11cb;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Choice container */
+#choices-container {
+    margin-bottom: 20px;
+}
+
+.choice-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.choice-item input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.choice-item input[type="text"]:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+}
+
+.choice-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Nút xóa choice */
+.choice-item button {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.choice-item button:hover {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    transform: scale(1.05);
+}
+
+/* Nút thêm và lưu */
+button[type="submit"], button[type="button"] {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+button[type="button"] {
+    background: linear-gradient(135deg, #5bc0de, #31b0d5);
+    color: #fff;
+}
+
+button[type="button"]:hover {
+    background: linear-gradient(135deg, #31b0d5, #5bc0de);
+    transform: scale(1.05);
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .choice-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .choice-item input[type="text"], .choice-item input[type="radio"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .choice-item button {
+        width: 100%;
+    }
+}

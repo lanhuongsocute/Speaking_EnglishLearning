@@ -1,0 +1,123 @@
+/* Container chính */
+.container-userlist {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #4a00e0;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Bảng danh sách người dùng */
+.table {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.table th {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 10px;
+    color: #555;
+    font-size: 15px;
+}
+
+/* Avatar */
+.avatar {
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Badge */
+.badge {
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+/* Buttons */
+.btn {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #d9534f, #c9302c);
+    border: none;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(45deg, #c9302c, #d9534f);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+}

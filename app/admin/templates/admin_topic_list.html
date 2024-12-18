@@ -1,0 +1,42 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_topic_list.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container_toppic"> 
+    <h1>Topic List</h1>
+    <a href="{{ url_for('admin.admin_add_topic') }}" class="btn btn-success">Thêm Chủ Đề</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for topic in topics %}
+            <tr>
+                <td>{{ topic.id }}</td>
+                <td>{{ topic.name }}</td>
+                <td>{{ topic.description }}</td>
+                <td>
+                    <img src="{{ url_for('static', filename='images/' + topic.image_url) }}" alt="Topic Image" class="topic_image">
+                </td>
+                <td>
+                    <a href="{{ url_for('admin.edit_topic', id=topic.id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ url_for('admin.delete_topic', id=topic.id) }}" method="POST" style="display:inline;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa chủ đề này?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

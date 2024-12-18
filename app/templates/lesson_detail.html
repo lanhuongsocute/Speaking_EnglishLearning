@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Lesson {{ lesson.title }}{% endblock %}
+
+{% block content %}
+<main class="container">
+
+    <div id="completion-status">
+        <div id="completion-status">
+            {% if is_completed %}
+                <p class="text-success"><strong>🎉 Lesson Completed!</strong></p>
+            {% else %}
+                <p class="text-warning"><strong>Lesson Not Completed Yet</strong></p>
+            {% endif %}
+        </div>        
+    </div>
+    
+    <div class="lesson-content">
+        <h1>{{ lesson.title }}</h1>
+        <p>{{ lesson.content }}</p>        
+        {% if vocabularies %}
+                <div id="vocab-list" class="vocab-list">
+            {% for vocab in vocabularies %}
+            <div class="vocab-item">
+                <div class="vocab-content">
+                    <h2 class="vocab-word">{{ vocab.word }}</h2>
+                    <p class="vocab-meaning">{{ vocab.meaning }}</p>
+                </div>
+                <div class="vocab-actions">
+                    <button class="btn record" onclick="startRecording({{ vocab.id }})">🎙️ Record</button>
+                    <button class="btn stop" onclick="stopRecording({{ vocab.id }})" disabled>🛑 Stop</button>
+                </div>
+                <p id="result-{{ vocab.id }}" class="result-msg"></p>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="status" class="status"></div>
+        {% endif %}
+
+            
+            <!-- Hiển thị câu hỏi và đáp án -->
+            {% if question_data %}
+            <div class="questions">
+                <h2>Questions</h2>
+                <form id="quiz-form">
+                    {% for data in question_data %}
+                    <div class="question-item mb-3 p-3 border rounded">
+                        <p><strong>Question {{ loop.index }}:</strong> {{ data.question.content }}</p>
+                        <ul class="choices">
+                            {% for choice in data.choices %}
+                            <li>
+                                <label>
+                                    <input type="radio" name="question-{{ data.question.id }}" value="{{ choice.id }}"
+                                        {% if correct_answers and correct_answers[data.question.id] == choice.id %} checked {% endif %}
+                                        {% if is_completed %} disabled {% endif %}>
+                                    {{ loop.index|to_letter }}. {{ choice.content }}
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                    {% if not is_completed %}
+                    <button type="button" class="btn btn-primary" onclick="submitAnswers()">Submit</button>
+                    {% endif %}
+                </form>
+            </div>
+            {% endif %}
+
+</main>
+<script>
+    const lessonId = "{{ lesson.id }}";
+</script>
+<script src="{{ url_for('static', filename='js/vocabulary.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lesson.js') }}"></script>
+
+
+{% endblock %}

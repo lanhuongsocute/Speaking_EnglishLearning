@@ -1,0 +1,42 @@
+<!-- Template admin_question_list.html -->
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_question.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-ques">
+    <h2>Question List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Lesson</th>
+                <th>Type</th>
+                <th>Correct Answer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question in questions %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ question.content }}</td>
+                <td>{{ question.lesson.title }}</td>
+                <td>{{ question.question_type }}</td>
+                <td>{{ question.answer }}</td>
+                <td>
+                    <a href="{{ url_for('admin.update_question', question_id=question.id) }}" class="btn btn-primary btn-sm">Edit</a>
+                    <form method="POST" action="{{ url_for('admin.delete_question', question_id=question.id) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                    <a href="{{ url_for('admin.manage_choices', question_id=question.id) }}" class="btn btn-info btn-sm">Choices</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

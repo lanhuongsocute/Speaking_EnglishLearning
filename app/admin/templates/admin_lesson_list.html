@@ -1,0 +1,41 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_lesson_list.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h5>All Lessons</h5>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Topic</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lesson in lessons %}
+                <tr>
+                    <td>{{ lesson.title }}</td>
+                    <!-- Kiểm tra xem lesson.topic có tồn tại không trước khi hiển thị -->
+                    <td>{{ lesson.topic.name if lesson.topic else 'No Topic' }}</td>
+                    <td>
+                        <img src="{{ url_for('static', filename='images/' + lesson.image_url) }}" alt="Lesson Image" class="lesson_image">
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin.admin_edit_lesson', lesson_id=lesson.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('admin.admin_delete_lesson', lesson_id=lesson.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this lesson?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

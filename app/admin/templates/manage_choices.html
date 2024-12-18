@@ -1,0 +1,39 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/manage_choices.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-choices">
+    <h2>Question: "{{ question.content }}"</h2>
+    <form method="POST">
+        <div id="choices-container">
+            {% for choice in choices %}
+            <div class="choice-item">
+                <input type="text" name="choices[]" value="{{ choice.content }}" required>
+                <input type="radio" name="correct_choice" value="{{ loop.index0 }}" {% if choice.is_correct %}checked{% endif %}> Answer Correct
+                <button type="button" onclick="this.parentElement.remove()">Delete</button>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="button" onclick="addChoiceField()">Add Choice</button>
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<script>
+    function addChoiceField() {
+        const container = document.getElementById('choices-container');
+        const choiceCount = container.children.length;
+        const choiceField = `
+            <div class="choice-item">
+                <input type="text" name="choices[]" placeholder="Nội dung choice" required>
+                <input type="radio" name="correct_choice" value="${choiceCount}"> Đáp án đúng
+                <button type="button" onclick="this.parentElement.remove()">Xóa</button>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', choiceField);
+    }
+</script>
+{% endblock %}

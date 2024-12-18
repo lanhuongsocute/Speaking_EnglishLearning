@@ -1,0 +1,13 @@
+{% extends "admin_base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-admin">
+    <h4>Welcome to the Admin Dashboard</h4>
+    <p>Manage all your lessons, topics, and challenges in one place with ease.</p>
+    <img src="{{ url_for('static', filename='images/adminpage.jpg') }}" alt="Admin Image" class="admin-image">
+</div>
+{% endblock %}

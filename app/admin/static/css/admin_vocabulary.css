@@ -1,0 +1,132 @@
+/* Container chính */
+.container-vob {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tiêu đề chính */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6a11cb;
+    margin-bottom: 20px;
+}
+
+/* Form */
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    outline: none;
+}
+
+/* Nút Submit */
+button[type="submit"] {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(106, 17, 203, 0.3);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+table th, table td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background 0.3s ease;
+}
+
+/* Nút Actions */
+table a, table button {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 6px 12px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+table a {
+    background: linear-gradient(135deg, #f0ad4e, #ec971f);
+}
+
+table a:hover {
+    background: linear-gradient(135deg, #ec971f, #f0ad4e);
+    transform: scale(1.05);
+}
+
+table button {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+    border: none;
+}
+
+table button:hover {
+    background: linear-gradient(135deg, #c9302c, #d9534f);
+    transform: scale(1.05);
+}

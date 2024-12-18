@@ -1,0 +1,59 @@
+{% block content %}
+
+<header class="header">
+  <div class="container header__container">
+    <div class="header__logo">
+      <a href="{{ url_for('index') }}">
+        <img
+          src="{{ url_for('static', filename='images/logo.png') }}"
+          alt="Logo"
+          class="header__logo-img"
+        />
+      </a>
+    </div>
+
+    <nav class="header__nav">
+      {% for link in nav_links %}
+      <a href="{{ link.url }}">{{ link.name }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="header__user-actions">
+      {% if session.get('user_id') %}
+      <!-- Khi người dùng đã đăng nhập -->
+      <div class="header__profile">
+        <button class="header__username-btn" id="profile-button">
+          Hello, {{ session.get('username') }}
+          <span class="header__arrow"></span>
+        </button>
+        <div class="header__dropdown" id="profile-dropdown">
+          {% if session.get('is_admin') %}
+          <!-- Thêm nút đi đến trang admin nếu là admin -->
+          <a href="{{ url_for('admin.admin_dashboard') }}" class="header__dropdown-item"
+            >Admin Panel</a
+          >
+          {% endif %}
+          <a href="{{ url_for('profile') }}" class="header__dropdown-item"
+            >Profile</a
+          >
+          <a href="{{ url_for('logout') }}" class="header__dropdown-item"
+            >Logout</a
+          >
+        </div>
+      </div>
+      {% else %}
+      <!-- Khi người dùng chưa đăng nhập -->
+      <a href="{{ url_for('login') }}" class="header__btn header__btn--login"
+        >Login</a
+      >
+      <a
+        href="{{ url_for('register') }}"
+        class="header__btn header__btn--register"
+        >Register</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</header>
+<script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
+{%endblock %}

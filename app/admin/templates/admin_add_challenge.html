@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin_add_challenge.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h4>Add Speaking Challenge</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <!-- Chọn Topic -->
+            <div class="form-group">
+                <label for="topic">Select Topic:</label>
+                <select name="topic" id="topic" class="form-control" required>
+                    {% for topic in topics %}
+                        <option value="{{ topic.id }}">{{ topic.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Nhập câu hỏi -->
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <textarea name="question" id="question" rows="3" class="form-control" required></textarea>
+            </div>
+
+            <!-- Nhập gợi ý -->
+            <div class="form-group">
+                <label for="hint1">Hint 1:</label>
+                <input type="text" name="hint1" id="hint1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="hint2">Hint 2:</label>
+                <input type="text" name="hint2" id="hint2" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="hint3">Hint 3:</label>
+                <input type="text" name="hint3" id="hint3" class="form-control">
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary">Add Challenge</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
